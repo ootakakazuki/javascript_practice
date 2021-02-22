@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="hoge.css">
+<title>template</title>
+</head>
+
+<body>
+<p><input type="text" id="sample1input" onkeyup="sample1getValue();" /></p>
+<p>入力欄のテキスト：<span id="sample1output"></span></p>
+
+<section>
+<p>Last time<span id="time"></span></p>
+</section>
+
+
+
+
+<p id="demo"></p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+
+<div id="div1" class="fa"></div>
+
+<script src="./javascript_sample.js">
+</script>
+<script>
+
+
+var stringFunc = (x, y) => {return x + y};
+
+document.getElementById('demo3').textContent = stringFunc("Y", "E");
+
+
+function sample1getValue() {
+    var $sample1value = document.getElementById( "sample1input" ).value;
+    document.getElementById( "sample1output" ).innerHTML = $sample1value;
+}
+var now = new Date();
+var year = now.getFullYear();
+var month = now.getMonth();
+var date1 = now.getDate();
+var hour = now.getHours();
+var min = now.getMinutes();
+
+var output = year + '/' + (month + 1) + '/' + date1 + '/' + hour + '/' + min;
+
+document.getElementById('time').textContent = output;
+
+// Set the date we're counting down to
+var countDownDate = new Date("Oct 5, 2031 00:00:00").getTime();
+
+
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+  
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  var seconds2 = Math.floor(distance / 1000);
+
+
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = days + "日 " + hours + "時"
+  + minutes + "分 " + seconds + "秒 ";
+   
+  document.getElementById("demo2").innerHTML = seconds2 + "秒";
+      
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+
+}, 1000);
+
+
+function hourglass() {
+  var a;
+  a = document.getElementById("div1");
+  a.innerHTML = "&#xf251;";
+  setTimeout(function () {
+      a.innerHTML = "&#xf252;";
+    }, 1000);
+  setTimeout(function () {
+      a.innerHTML = "&#xf253;";
+    }, 2000);
+}
+
+hourglass();
+setInterval(hourglass, 3000);
+
+
+
+</script>
+
+<p>This example demonstrates how to use an icon library to make an animated effect.</p>
+</body>
+
+
+<css>
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+</css>
+
+
+
+</body>
+
+</html>
